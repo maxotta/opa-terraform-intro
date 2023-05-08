@@ -1,0 +1,1270 @@
+{
+    "format_version": "1.1",
+    "terraform_version": "1.3.7",
+    "variables": {
+        "one_endpoint": {
+            "value": "https://nuada.zcu.cz/RPC2"
+        },
+        "one_password": {
+            "value": "8c348dca86050eaaa9a2acd5c0a65a294e0477eeef0a1ef7ba933f64aebf338c"
+        },
+        "one_username": {
+            "value": "maxmilio"
+        },
+        "vm_admin_user": {
+            "value": "nodeadm"
+        },
+        "vm_image_name": {
+            "value": "Alpine Linux 3.16"
+        },
+        "vm_image_url": {
+            "value": "https://marketplace.opennebula.io//appliance/73867a80-7ae7-013b-d6ef-7875a4a4f528/download/0"
+        },
+        "vm_imagedatastore_id": {
+            "value": 101
+        },
+        "vm_instance_count": {
+            "value": 4
+        },
+        "vm_network_id": {
+            "value": 3
+        },
+        "vm_node_init_log": {
+            "value": "/var/log/node-init.log"
+        },
+        "vm_ssh_pubkey": {
+            "value": "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHXkjYagaRFTCO4VnfsvNX/5Mq7V09eOp9lYqqQJctnNz/mbIRhxyn9K3nhXjFlZtvDC0yubjXPgihV5J3xUdx/hQAIyczmev0Woq17X0la8iXgM5Kxr792hpNbuhlVM9tpsGwEiOqiSl/lPI90SPpGHRw2aqqkC4bAX9r/DTUpOrQmcw== max@ThinkPad"
+        }
+    },
+    "planned_values": {
+        "outputs": {
+            "test-master-vm_id": {
+                "sensitive": false
+            }
+        },
+        "root_module": {
+            "resources": [
+                {
+                    "address": "opennebula_image.os-image",
+                    "mode": "managed",
+                    "type": "opennebula_image",
+                    "name": "os-image",
+                    "provider_name": "registry.terraform.io/opennebula/opennebula",
+                    "schema_version": 0,
+                    "values": {
+                        "clone_from_image": null,
+                        "datastore_id": 101,
+                        "description": null,
+                        "group": null,
+                        "lock": null,
+                        "name": "Alpine Linux 3.16",
+                        "path": "https://marketplace.opennebula.io//appliance/73867a80-7ae7-013b-d6ef-7875a4a4f528/download/0",
+                        "permissions": "600",
+                        "persistent": false,
+                        "tags": null,
+                        "timeout": 10
+                    },
+                    "sensitive_values": {}
+                },
+                {
+                    "address": "opennebula_virtual_machine.test-node-vm[0]",
+                    "mode": "managed",
+                    "type": "opennebula_virtual_machine",
+                    "name": "test-node-vm",
+                    "index": 0,
+                    "provider_name": "registry.terraform.io/opennebula/opennebula",
+                    "schema_version": 0,
+                    "values": {
+                        "context": {
+                            "HOSTNAME": "$NAME",
+                            "NETWORK": "YES",
+                            "SSH_PUBLIC_KEY": "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHXkjYagaRFTCO4VnfsvNX/5Mq7V09eOp9lYqqQJctnNz/mbIRhxyn9K3nhXjFlZtvDC0yubjXPgihV5J3xUdx/hQAIyczmev0Woq17X0la8iXgM5Kxr792hpNbuhlVM9tpsGwEiOqiSl/lPI90SPpGHRw2aqqkC4bAX9r/DTUpOrQmcw== max@ThinkPad"
+                        },
+                        "cpu": 1,
+                        "cpumodel": [],
+                        "description": "Testing VM #1",
+                        "disk": [
+                            {
+                                "driver": null,
+                                "size": 12000,
+                                "target": "vda",
+                                "volatile_format": null,
+                                "volatile_type": null
+                            }
+                        ],
+                        "graphics": [
+                            {
+                                "keymap": "en-us",
+                                "listen": "0.0.0.0",
+                                "type": "vnc"
+                            }
+                        ],
+                        "group": "users",
+                        "keep_nic_order": null,
+                        "lock": null,
+                        "memory": 1024,
+                        "name": "test-node-vm-1",
+                        "nic": [
+                            {
+                                "ip": null,
+                                "mac": null,
+                                "model": null,
+                                "network_id": 3,
+                                "physical_device": null,
+                                "security_groups": null,
+                                "virtio_queues": null
+                            }
+                        ],
+                        "os": [
+                            {
+                                "arch": "x86_64",
+                                "boot": "disk0"
+                            }
+                        ],
+                        "pending": false,
+                        "permissions": "600",
+                        "sched_ds_requirements": null,
+                        "sched_requirements": null,
+                        "tags": null,
+                        "template_id": -1,
+                        "timeout": 3,
+                        "vcpu": 1
+                    },
+                    "sensitive_values": {
+                        "context": {},
+                        "cpumodel": [],
+                        "disk": [
+                            {}
+                        ],
+                        "graphics": [
+                            {}
+                        ],
+                        "nic": [
+                            {
+                                "computed_security_groups": []
+                            }
+                        ],
+                        "os": [
+                            {}
+                        ],
+                        "template_disk": [],
+                        "template_nic": [],
+                        "vmgroup": []
+                    }
+                },
+                {
+                    "address": "opennebula_virtual_machine.test-node-vm[1]",
+                    "mode": "managed",
+                    "type": "opennebula_virtual_machine",
+                    "name": "test-node-vm",
+                    "index": 1,
+                    "provider_name": "registry.terraform.io/opennebula/opennebula",
+                    "schema_version": 0,
+                    "values": {
+                        "context": {
+                            "HOSTNAME": "$NAME",
+                            "NETWORK": "YES",
+                            "SSH_PUBLIC_KEY": "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHXkjYagaRFTCO4VnfsvNX/5Mq7V09eOp9lYqqQJctnNz/mbIRhxyn9K3nhXjFlZtvDC0yubjXPgihV5J3xUdx/hQAIyczmev0Woq17X0la8iXgM5Kxr792hpNbuhlVM9tpsGwEiOqiSl/lPI90SPpGHRw2aqqkC4bAX9r/DTUpOrQmcw== max@ThinkPad"
+                        },
+                        "cpu": 1,
+                        "cpumodel": [],
+                        "description": "Testing VM #2",
+                        "disk": [
+                            {
+                                "driver": null,
+                                "size": 2000,
+                                "target": "vda",
+                                "volatile_format": null,
+                                "volatile_type": null
+                            }
+                        ],
+                        "graphics": [
+                            {
+                                "keymap": "en-us",
+                                "listen": "0.0.0.0",
+                                "type": "vnc"
+                            }
+                        ],
+                        "group": "users",
+                        "keep_nic_order": null,
+                        "lock": null,
+                        "memory": 1024,
+                        "name": "test-node-vm-2",
+                        "nic": [
+                            {
+                                "ip": null,
+                                "mac": null,
+                                "model": null,
+                                "network_id": 3,
+                                "physical_device": null,
+                                "security_groups": null,
+                                "virtio_queues": null
+                            }
+                        ],
+                        "os": [
+                            {
+                                "arch": "x86_64",
+                                "boot": "disk0"
+                            }
+                        ],
+                        "pending": false,
+                        "permissions": "600",
+                        "sched_ds_requirements": null,
+                        "sched_requirements": null,
+                        "tags": null,
+                        "template_id": -1,
+                        "timeout": 3,
+                        "vcpu": 1
+                    },
+                    "sensitive_values": {
+                        "context": {},
+                        "cpumodel": [],
+                        "disk": [
+                            {}
+                        ],
+                        "graphics": [
+                            {}
+                        ],
+                        "nic": [
+                            {
+                                "computed_security_groups": []
+                            }
+                        ],
+                        "os": [
+                            {}
+                        ],
+                        "template_disk": [],
+                        "template_nic": [],
+                        "vmgroup": []
+                    }
+                },
+                {
+                    "address": "opennebula_virtual_machine.test-node-vm[2]",
+                    "mode": "managed",
+                    "type": "opennebula_virtual_machine",
+                    "name": "test-node-vm",
+                    "index": 2,
+                    "provider_name": "registry.terraform.io/opennebula/opennebula",
+                    "schema_version": 0,
+                    "values": {
+                        "context": {
+                            "HOSTNAME": "$NAME",
+                            "NETWORK": "YES",
+                            "SSH_PUBLIC_KEY": "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHXkjYagaRFTCO4VnfsvNX/5Mq7V09eOp9lYqqQJctnNz/mbIRhxyn9K3nhXjFlZtvDC0yubjXPgihV5J3xUdx/hQAIyczmev0Woq17X0la8iXgM5Kxr792hpNbuhlVM9tpsGwEiOqiSl/lPI90SPpGHRw2aqqkC4bAX9r/DTUpOrQmcw== max@ThinkPad"
+                        },
+                        "cpu": 1,
+                        "cpumodel": [],
+                        "description": "Testing VM #3",
+                        "disk": [
+                            {
+                                "driver": null,
+                                "size": 12000,
+                                "target": "vda",
+                                "volatile_format": null,
+                                "volatile_type": null
+                            }
+                        ],
+                        "graphics": [
+                            {
+                                "keymap": "en-us",
+                                "listen": "0.0.0.0",
+                                "type": "vnc"
+                            }
+                        ],
+                        "group": "users",
+                        "keep_nic_order": null,
+                        "lock": null,
+                        "memory": 1024,
+                        "name": "test-node-vm-3",
+                        "nic": [
+                            {
+                                "ip": null,
+                                "mac": null,
+                                "model": null,
+                                "network_id": 3,
+                                "physical_device": null,
+                                "security_groups": null,
+                                "virtio_queues": null
+                            }
+                        ],
+                        "os": [
+                            {
+                                "arch": "x86_64",
+                                "boot": "disk0"
+                            }
+                        ],
+                        "pending": false,
+                        "permissions": "600",
+                        "sched_ds_requirements": null,
+                        "sched_requirements": null,
+                        "tags": null,
+                        "template_id": -1,
+                        "timeout": 3,
+                        "vcpu": 1
+                    },
+                    "sensitive_values": {
+                        "context": {},
+                        "cpumodel": [],
+                        "disk": [
+                            {}
+                        ],
+                        "graphics": [
+                            {}
+                        ],
+                        "nic": [
+                            {
+                                "computed_security_groups": []
+                            }
+                        ],
+                        "os": [
+                            {}
+                        ],
+                        "template_disk": [],
+                        "template_nic": [],
+                        "vmgroup": []
+                    }
+                },
+                {
+                    "address": "opennebula_virtual_machine.test-node-vm[3]",
+                    "mode": "managed",
+                    "type": "opennebula_virtual_machine",
+                    "name": "test-node-vm",
+                    "index": 3,
+                    "provider_name": "registry.terraform.io/opennebula/opennebula",
+                    "schema_version": 0,
+                    "values": {
+                        "context": {
+                            "HOSTNAME": "$NAME",
+                            "NETWORK": "YES",
+                            "SSH_PUBLIC_KEY": "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHXkjYagaRFTCO4VnfsvNX/5Mq7V09eOp9lYqqQJctnNz/mbIRhxyn9K3nhXjFlZtvDC0yubjXPgihV5J3xUdx/hQAIyczmev0Woq17X0la8iXgM5Kxr792hpNbuhlVM9tpsGwEiOqiSl/lPI90SPpGHRw2aqqkC4bAX9r/DTUpOrQmcw== max@ThinkPad"
+                        },
+                        "cpu": 1,
+                        "cpumodel": [],
+                        "description": "Testing VM #4",
+                        "disk": [
+                            {
+                                "driver": null,
+                                "size": 12000,
+                                "target": "vda",
+                                "volatile_format": null,
+                                "volatile_type": null
+                            }
+                        ],
+                        "graphics": [
+                            {
+                                "keymap": "en-us",
+                                "listen": "0.0.0.0",
+                                "type": "vnc"
+                            }
+                        ],
+                        "group": "users",
+                        "keep_nic_order": null,
+                        "lock": null,
+                        "memory": 1024,
+                        "name": "test-node-vm-4",
+                        "nic": [
+                            {
+                                "ip": null,
+                                "mac": null,
+                                "model": null,
+                                "network_id": 3,
+                                "physical_device": null,
+                                "security_groups": null,
+                                "virtio_queues": null
+                            }
+                        ],
+                        "os": [
+                            {
+                                "arch": "x86_64",
+                                "boot": "disk0"
+                            }
+                        ],
+                        "pending": false,
+                        "permissions": "600",
+                        "sched_ds_requirements": null,
+                        "sched_requirements": null,
+                        "tags": null,
+                        "template_id": -1,
+                        "timeout": 3,
+                        "vcpu": 1
+                    },
+                    "sensitive_values": {
+                        "context": {},
+                        "cpumodel": [],
+                        "disk": [
+                            {}
+                        ],
+                        "graphics": [
+                            {}
+                        ],
+                        "nic": [
+                            {
+                                "computed_security_groups": []
+                            }
+                        ],
+                        "os": [
+                            {}
+                        ],
+                        "template_disk": [],
+                        "template_nic": [],
+                        "vmgroup": []
+                    }
+                }
+            ]
+        }
+    },
+    "resource_changes": [
+        {
+            "address": "opennebula_image.os-image",
+            "mode": "managed",
+            "type": "opennebula_image",
+            "name": "os-image",
+            "provider_name": "registry.terraform.io/opennebula/opennebula",
+            "change": {
+                "actions": [
+                    "create"
+                ],
+                "before": null,
+                "after": {
+                    "clone_from_image": null,
+                    "datastore_id": 102,
+                    "description": null,
+                    "group": null,
+                    "lock": null,
+                    "name": "Alpine Linux 3.16",
+                    "path": "https://marketplace.opennebula.io//appliance/73867a80-7ae7-013b-d6ef-7875a4a4f528/download/0",
+                    "permissions": "600",
+                    "persistent": false,
+                    "tags": null,
+                    "timeout": 10
+                },
+                "after_unknown": {
+                    "dev_prefix": true,
+                    "driver": true,
+                    "format": true,
+                    "gid": true,
+                    "gname": true,
+                    "id": true,
+                    "size": true,
+                    "target": true,
+                    "type": true,
+                    "uid": true,
+                    "uname": true
+                },
+                "before_sensitive": false,
+                "after_sensitive": {}
+            }
+        },
+        {
+            "address": "opennebula_virtual_machine.test-node-vm[0]",
+            "mode": "managed",
+            "type": "opennebula_virtual_machine",
+            "name": "test-node-vm",
+            "index": 0,
+            "provider_name": "registry.terraform.io/opennebula/opennebula",
+            "change": {
+                "actions": [
+                    "create"
+                ],
+                "before": null,
+                "after": {
+                    "context": {
+                        "HOSTNAME": "$NAME",
+                        "NETWORK": "YES",
+                        "SSH_PUBLIC_KEY": "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHXkjYagaRFTCO4VnfsvNX/5Mq7V09eOp9lYqqQJctnNz/mbIRhxyn9K3nhXjFlZtvDC0yubjXPgihV5J3xUdx/hQAIyczmev0Woq17X0la8iXgM5Kxr792hpNbuhlVM9tpsGwEiOqiSl/lPI90SPpGHRw2aqqkC4bAX9r/DTUpOrQmcw== max@ThinkPad"
+                    },
+                    "cpu": 1,
+                    "cpumodel": [],
+                    "description": "Testing VM #1",
+                    "disk": [
+                        {
+                            "driver": null,
+                            "size": 12000,
+                            "target": "vda",
+                            "volatile_format": null,
+                            "volatile_type": null
+                        }
+                    ],
+                    "graphics": [
+                        {
+                            "keymap": "en-us",
+                            "listen": "0.0.0.0",
+                            "type": "vnc"
+                        }
+                    ],
+                    "group": "users",
+                    "keep_nic_order": null,
+                    "lock": null,
+                    "memory": 1024,
+                    "name": "test-node-vm-1",
+                    "nic": [
+                        {
+                            "ip": null,
+                            "mac": null,
+                            "model": null,
+                            "network_id": 3,
+                            "physical_device": null,
+                            "security_groups": null,
+                            "virtio_queues": null
+                        }
+                    ],
+                    "os": [
+                        {
+                            "arch": "x86_64",
+                            "boot": "disk0"
+                        }
+                    ],
+                    "pending": false,
+                    "permissions": "600",
+                    "sched_ds_requirements": null,
+                    "sched_requirements": null,
+                    "tags": null,
+                    "template_id": -1,
+                    "timeout": 3,
+                    "vcpu": 1
+                },
+                "after_unknown": {
+                    "context": {},
+                    "cpumodel": [],
+                    "disk": [
+                        {
+                            "computed_driver": true,
+                            "computed_size": true,
+                            "computed_target": true,
+                            "disk_id": true,
+                            "image_id": true
+                        }
+                    ],
+                    "gid": true,
+                    "gname": true,
+                    "graphics": [
+                        {
+                            "port": true
+                        }
+                    ],
+                    "id": true,
+                    "instance": true,
+                    "ip": true,
+                    "lcmstate": true,
+                    "nic": [
+                        {
+                            "computed_ip": true,
+                            "computed_mac": true,
+                            "computed_model": true,
+                            "computed_physical_device": true,
+                            "computed_security_groups": true,
+                            "computed_virtio_queues": true,
+                            "network": true,
+                            "nic_id": true
+                        }
+                    ],
+                    "os": [
+                        {}
+                    ],
+                    "state": true,
+                    "template_disk": true,
+                    "template_nic": true,
+                    "uid": true,
+                    "uname": true,
+                    "vmgroup": true
+                },
+                "before_sensitive": false,
+                "after_sensitive": {
+                    "context": {},
+                    "cpumodel": [],
+                    "disk": [
+                        {}
+                    ],
+                    "graphics": [
+                        {}
+                    ],
+                    "nic": [
+                        {
+                            "computed_security_groups": []
+                        }
+                    ],
+                    "os": [
+                        {}
+                    ],
+                    "template_disk": [],
+                    "template_nic": [],
+                    "vmgroup": []
+                }
+            }
+        },
+        {
+            "address": "opennebula_virtual_machine.test-node-vm[1]",
+            "mode": "managed",
+            "type": "opennebula_virtual_machine",
+            "name": "test-node-vm",
+            "index": 1,
+            "provider_name": "registry.terraform.io/opennebula/opennebula",
+            "change": {
+                "actions": [
+                    "create"
+                ],
+                "before": null,
+                "after": {
+                    "context": {
+                        "HOSTNAME": "$NAME",
+                        "NETWORK": "YES",
+                        "SSH_PUBLIC_KEY": "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHXkjYagaRFTCO4VnfsvNX/5Mq7V09eOp9lYqqQJctnNz/mbIRhxyn9K3nhXjFlZtvDC0yubjXPgihV5J3xUdx/hQAIyczmev0Woq17X0la8iXgM5Kxr792hpNbuhlVM9tpsGwEiOqiSl/lPI90SPpGHRw2aqqkC4bAX9r/DTUpOrQmcw== max@ThinkPad"
+                    },
+                    "cpu": 1,
+                    "cpumodel": [],
+                    "description": "Testing VM #2",
+                    "disk": [
+                        {
+                            "driver": null,
+                            "size": 2000,
+                            "target": "vda",
+                            "volatile_format": null,
+                            "volatile_type": null
+                        }
+                    ],
+                    "graphics": [
+                        {
+                            "keymap": "en-us",
+                            "listen": "0.0.0.0",
+                            "type": "vnc"
+                        }
+                    ],
+                    "group": "users",
+                    "keep_nic_order": null,
+                    "lock": null,
+                    "memory": 1024,
+                    "name": "test-node-vm-2",
+                    "nic": [
+                        {
+                            "ip": null,
+                            "mac": null,
+                            "model": null,
+                            "network_id": 3,
+                            "physical_device": null,
+                            "security_groups": null,
+                            "virtio_queues": null
+                        }
+                    ],
+                    "os": [
+                        {
+                            "arch": "x86_64",
+                            "boot": "disk0"
+                        }
+                    ],
+                    "pending": false,
+                    "permissions": "600",
+                    "sched_ds_requirements": null,
+                    "sched_requirements": null,
+                    "tags": null,
+                    "template_id": -1,
+                    "timeout": 3,
+                    "vcpu": 1
+                },
+                "after_unknown": {
+                    "context": {},
+                    "cpumodel": [],
+                    "disk": [
+                        {
+                            "computed_driver": true,
+                            "computed_size": true,
+                            "computed_target": true,
+                            "disk_id": true,
+                            "image_id": true
+                        }
+                    ],
+                    "gid": true,
+                    "gname": true,
+                    "graphics": [
+                        {
+                            "port": true
+                        }
+                    ],
+                    "id": true,
+                    "instance": true,
+                    "ip": true,
+                    "lcmstate": true,
+                    "nic": [
+                        {
+                            "computed_ip": true,
+                            "computed_mac": true,
+                            "computed_model": true,
+                            "computed_physical_device": true,
+                            "computed_security_groups": true,
+                            "computed_virtio_queues": true,
+                            "network": true,
+                            "nic_id": true
+                        }
+                    ],
+                    "os": [
+                        {}
+                    ],
+                    "state": true,
+                    "template_disk": true,
+                    "template_nic": true,
+                    "uid": true,
+                    "uname": true,
+                    "vmgroup": true
+                },
+                "before_sensitive": false,
+                "after_sensitive": {
+                    "context": {},
+                    "cpumodel": [],
+                    "disk": [
+                        {}
+                    ],
+                    "graphics": [
+                        {}
+                    ],
+                    "nic": [
+                        {
+                            "computed_security_groups": []
+                        }
+                    ],
+                    "os": [
+                        {}
+                    ],
+                    "template_disk": [],
+                    "template_nic": [],
+                    "vmgroup": []
+                }
+            }
+        },
+        {
+            "address": "opennebula_virtual_machine.test-node-vm[2]",
+            "mode": "managed",
+            "type": "opennebula_virtual_machine",
+            "name": "test-node-vm",
+            "index": 2,
+            "provider_name": "registry.terraform.io/opennebula/opennebula",
+            "change": {
+                "actions": [
+                    "create"
+                ],
+                "before": null,
+                "after": {
+                    "context": {
+                        "HOSTNAME": "$NAME",
+                        "NETWORK": "YES",
+                        "SSH_PUBLIC_KEY": "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHXkjYagaRFTCO4VnfsvNX/5Mq7V09eOp9lYqqQJctnNz/mbIRhxyn9K3nhXjFlZtvDC0yubjXPgihV5J3xUdx/hQAIyczmev0Woq17X0la8iXgM5Kxr792hpNbuhlVM9tpsGwEiOqiSl/lPI90SPpGHRw2aqqkC4bAX9r/DTUpOrQmcw== max@ThinkPad"
+                    },
+                    "cpu": 1,
+                    "cpumodel": [],
+                    "description": "Testing VM #3",
+                    "disk": [
+                        {
+                            "driver": null,
+                            "size": 22000,
+                            "target": "vda",
+                            "volatile_format": null,
+                            "volatile_type": null
+                        }
+                    ],
+                    "graphics": [
+                        {
+                            "keymap": "en-us",
+                            "listen": "0.0.0.0",
+                            "type": "vnc"
+                        }
+                    ],
+                    "group": "users",
+                    "keep_nic_order": null,
+                    "lock": null,
+                    "memory": 1024,
+                    "name": "test-node-vm-3",
+                    "nic": [
+                        {
+                            "ip": null,
+                            "mac": null,
+                            "model": null,
+                            "network_id": 3,
+                            "physical_device": null,
+                            "security_groups": null,
+                            "virtio_queues": null
+                        }
+                    ],
+                    "os": [
+                        {
+                            "arch": "x86_64",
+                            "boot": "disk0"
+                        }
+                    ],
+                    "pending": false,
+                    "permissions": "600",
+                    "sched_ds_requirements": null,
+                    "sched_requirements": null,
+                    "tags": null,
+                    "template_id": -1,
+                    "timeout": 3,
+                    "vcpu": 1
+                },
+                "after_unknown": {
+                    "context": {},
+                    "cpumodel": [],
+                    "disk": [
+                        {
+                            "computed_driver": true,
+                            "computed_size": true,
+                            "computed_target": true,
+                            "disk_id": true,
+                            "image_id": true
+                        }
+                    ],
+                    "gid": true,
+                    "gname": true,
+                    "graphics": [
+                        {
+                            "port": true
+                        }
+                    ],
+                    "id": true,
+                    "instance": true,
+                    "ip": true,
+                    "lcmstate": true,
+                    "nic": [
+                        {
+                            "computed_ip": true,
+                            "computed_mac": true,
+                            "computed_model": true,
+                            "computed_physical_device": true,
+                            "computed_security_groups": true,
+                            "computed_virtio_queues": true,
+                            "network": true,
+                            "nic_id": true
+                        }
+                    ],
+                    "os": [
+                        {}
+                    ],
+                    "state": true,
+                    "template_disk": true,
+                    "template_nic": true,
+                    "uid": true,
+                    "uname": true,
+                    "vmgroup": true
+                },
+                "before_sensitive": false,
+                "after_sensitive": {
+                    "context": {},
+                    "cpumodel": [],
+                    "disk": [
+                        {}
+                    ],
+                    "graphics": [
+                        {}
+                    ],
+                    "nic": [
+                        {
+                            "computed_security_groups": []
+                        }
+                    ],
+                    "os": [
+                        {}
+                    ],
+                    "template_disk": [],
+                    "template_nic": [],
+                    "vmgroup": []
+                }
+            }
+        },
+        {
+            "address": "opennebula_virtual_machine.test-node-vm[3]",
+            "mode": "managed",
+            "type": "opennebula_virtual_machine",
+            "name": "test-node-vm",
+            "index": 3,
+            "provider_name": "registry.terraform.io/opennebula/opennebula",
+            "change": {
+                "actions": [
+                    "create"
+                ],
+                "before": null,
+                "after": {
+                    "context": {
+                        "HOSTNAME": "$NAME",
+                        "NETWORK": "YES",
+                        "SSH_PUBLIC_KEY": "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHXkjYagaRFTCO4VnfsvNX/5Mq7V09eOp9lYqqQJctnNz/mbIRhxyn9K3nhXjFlZtvDC0yubjXPgihV5J3xUdx/hQAIyczmev0Woq17X0la8iXgM5Kxr792hpNbuhlVM9tpsGwEiOqiSl/lPI90SPpGHRw2aqqkC4bAX9r/DTUpOrQmcw== max@ThinkPad"
+                    },
+                    "cpu": 1,
+                    "cpumodel": [],
+                    "description": "Testing VM #4",
+                    "disk": [
+                        {
+                            "driver": null,
+                            "size": 12000,
+                            "target": "vda",
+                            "volatile_format": null,
+                            "volatile_type": null
+                        }
+                    ],
+                    "graphics": [
+                        {
+                            "keymap": "en-us",
+                            "listen": "0.0.0.0",
+                            "type": "vnc"
+                        }
+                    ],
+                    "group": "users",
+                    "keep_nic_order": null,
+                    "lock": null,
+                    "memory": 1024,
+                    "name": "test-node-vm-4",
+                    "nic": [
+                        {
+                            "ip": null,
+                            "mac": null,
+                            "model": null,
+                            "network_id": 3,
+                            "physical_device": null,
+                            "security_groups": null,
+                            "virtio_queues": null
+                        }
+                    ],
+                    "os": [
+                        {
+                            "arch": "x86_64",
+                            "boot": "disk0"
+                        }
+                    ],
+                    "pending": false,
+                    "permissions": "600",
+                    "sched_ds_requirements": null,
+                    "sched_requirements": null,
+                    "tags": null,
+                    "template_id": -1,
+                    "timeout": 3,
+                    "vcpu": 1
+                },
+                "after_unknown": {
+                    "context": {},
+                    "cpumodel": [],
+                    "disk": [
+                        {
+                            "computed_driver": true,
+                            "computed_size": true,
+                            "computed_target": true,
+                            "disk_id": true,
+                            "image_id": true
+                        }
+                    ],
+                    "gid": true,
+                    "gname": true,
+                    "graphics": [
+                        {
+                            "port": true
+                        }
+                    ],
+                    "id": true,
+                    "instance": true,
+                    "ip": true,
+                    "lcmstate": true,
+                    "nic": [
+                        {
+                            "computed_ip": true,
+                            "computed_mac": true,
+                            "computed_model": true,
+                            "computed_physical_device": true,
+                            "computed_security_groups": true,
+                            "computed_virtio_queues": true,
+                            "network": true,
+                            "nic_id": true
+                        }
+                    ],
+                    "os": [
+                        {}
+                    ],
+                    "state": true,
+                    "template_disk": true,
+                    "template_nic": true,
+                    "uid": true,
+                    "uname": true,
+                    "vmgroup": true
+                },
+                "before_sensitive": false,
+                "after_sensitive": {
+                    "context": {},
+                    "cpumodel": [],
+                    "disk": [
+                        {}
+                    ],
+                    "graphics": [
+                        {}
+                    ],
+                    "nic": [
+                        {
+                            "computed_security_groups": []
+                        }
+                    ],
+                    "os": [
+                        {}
+                    ],
+                    "template_disk": [],
+                    "template_nic": [],
+                    "vmgroup": []
+                }
+            }
+        }
+    ],
+    "output_changes": {
+        "test-master-vm_id": {
+            "actions": [
+                "create"
+            ],
+            "before": null,
+            "after": [
+                null,
+                null,
+                null,
+                null
+            ],
+            "after_unknown": [
+                true,
+                true,
+                true,
+                true
+            ],
+            "before_sensitive": false,
+            "after_sensitive": false
+        }
+    },
+    "configuration": {
+        "provider_config": {
+            "opennebula": {
+                "name": "opennebula",
+                "full_name": "registry.terraform.io/opennebula/opennebula",
+                "version_constraint": "0.4.3",
+                "expressions": {
+                    "endpoint": {
+                        "references": [
+                            "var.one_endpoint"
+                        ]
+                    },
+                    "password": {
+                        "references": [
+                            "var.one_password"
+                        ]
+                    },
+                    "username": {
+                        "references": [
+                            "var.one_username"
+                        ]
+                    }
+                }
+            }
+        },
+        "root_module": {
+            "outputs": {
+                "test-master-vm_id": {
+                    "expression": {
+                        "references": [
+                            "opennebula_virtual_machine.test-node-vm"
+                        ]
+                    }
+                }
+            },
+            "resources": [
+                {
+                    "address": "opennebula_image.os-image",
+                    "mode": "managed",
+                    "type": "opennebula_image",
+                    "name": "os-image",
+                    "provider_config_key": "opennebula",
+                    "expressions": {
+                        "datastore_id": {
+                            "references": [
+                                "var.vm_imagedatastore_id"
+                            ]
+                        },
+                        "name": {
+                            "references": [
+                                "var.vm_image_name"
+                            ]
+                        },
+                        "path": {
+                            "references": [
+                                "var.vm_image_url"
+                            ]
+                        },
+                        "permissions": {
+                            "constant_value": "600"
+                        },
+                        "persistent": {
+                            "constant_value": false
+                        }
+                    },
+                    "schema_version": 0
+                },
+                {
+                    "address": "opennebula_virtual_machine.test-node-vm",
+                    "mode": "managed",
+                    "type": "opennebula_virtual_machine",
+                    "name": "test-node-vm",
+                    "provider_config_key": "opennebula",
+                    "provisioners": [
+                        {
+                            "type": "file",
+                            "expressions": {
+                                "destination": {
+                                    "constant_value": "/tmp"
+                                },
+                                "source": {
+                                    "constant_value": "provisioning-scripts/"
+                                }
+                            }
+                        },
+                        {
+                            "type": "remote-exec",
+                            "expressions": {
+                                "inline": {
+                                    "references": [
+                                        "var.vm_admin_user",
+                                        "var.vm_ssh_pubkey",
+                                        "var.vm_node_init_log",
+                                        "self.name",
+                                        "self",
+                                        "var.vm_node_init_log"
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "expressions": {
+                        "context": {
+                            "references": [
+                                "var.vm_ssh_pubkey"
+                            ]
+                        },
+                        "cpu": {
+                            "constant_value": 1
+                        },
+                        "description": {
+                            "references": [
+                                "count.index"
+                            ]
+                        },
+                        "disk": [
+                            {
+                                "image_id": {
+                                    "references": [
+                                        "opennebula_image.os-image.id",
+                                        "opennebula_image.os-image"
+                                    ]
+                                },
+                                "size": {
+                                    "constant_value": 12000
+                                },
+                                "target": {
+                                    "constant_value": "vda"
+                                }
+                            }
+                        ],
+                        "graphics": [
+                            {
+                                "listen": {
+                                    "constant_value": "0.0.0.0"
+                                },
+                                "type": {
+                                    "constant_value": "vnc"
+                                }
+                            }
+                        ],
+                        "group": {
+                            "constant_value": "users"
+                        },
+                        "memory": {
+                            "constant_value": 1024
+                        },
+                        "name": {
+                            "references": [
+                                "count.index"
+                            ]
+                        },
+                        "nic": [
+                            {
+                                "network_id": {
+                                    "references": [
+                                        "var.vm_network_id"
+                                    ]
+                                }
+                            }
+                        ],
+                        "os": [
+                            {
+                                "arch": {
+                                    "constant_value": "x86_64"
+                                },
+                                "boot": {
+                                    "constant_value": "disk0"
+                                }
+                            }
+                        ],
+                        "permissions": {
+                            "constant_value": "600"
+                        },
+                        "vcpu": {
+                            "constant_value": 1
+                        }
+                    },
+                    "schema_version": 0,
+                    "count_expression": {
+                        "references": [
+                            "var.vm_instance_count"
+                        ]
+                    }
+                }
+            ],
+            "variables": {
+                "one_endpoint": {
+                    "default": "https://your-opennebula-server/RPC2",
+                    "description": "Open Nebula endpoint URL"
+                },
+                "one_password": {
+                    "description": "Open Nebula login token"
+                },
+                "one_username": {
+                    "description": "Open Nebula username"
+                },
+                "vm_admin_user": {
+                    "default": "nodeadm",
+                    "description": "Username of the admin user"
+                },
+                "vm_image_name": {
+                    "description": "VM OS image name"
+                },
+                "vm_image_url": {
+                    "description": "VM OS image URL"
+                },
+                "vm_imagedatastore_id": {
+                    "default": 101,
+                    "description": "Open Nebula datastore ID"
+                },
+                "vm_instance_count": {
+                    "default": 1,
+                    "description": "Number of instances to create"
+                },
+                "vm_network_id": {
+                    "default": 3,
+                    "description": "ID of the virtual network to attach to the virtual machine"
+                },
+                "vm_node_init_log": {
+                    "default": "/var/log/node-init.log",
+                    "description": "Node initialization log file"
+                },
+                "vm_ssh_pubkey": {
+                    "description": "SSH public key used for login as root into the VM instance"
+                }
+            }
+        }
+    },
+    "relevant_attributes": [
+        {
+            "resource": "opennebula_image.os-image",
+            "attribute": [
+                "id"
+            ]
+        },
+        {
+            "resource": "opennebula_virtual_machine.test-node-vm",
+            "attribute": []
+        }
+    ]
+}

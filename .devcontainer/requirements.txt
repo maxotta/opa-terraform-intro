@@ -1,0 +1,2 @@
+OPA-python-client
+requests
