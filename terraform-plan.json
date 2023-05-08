@@ -172,7 +172,7 @@
                         "disk": [
                             {
                                 "driver": null,
-                                "size": 2000,
+                                "size": 12000,
                                 "target": "vda",
                                 "volatile_format": null,
                                 "volatile_type": null
@@ -427,7 +427,7 @@
                 "before": null,
                 "after": {
                     "clone_from_image": null,
-                    "datastore_id": 102,
+                    "datastore_id": 101,
                     "description": null,
                     "group": null,
                     "lock": null,
@@ -616,7 +616,7 @@
                     "disk": [
                         {
                             "driver": null,
-                            "size": 2000,
+                            "size": 12000,
                             "target": "vda",
                             "volatile_format": null,
                             "volatile_type": null
@@ -753,7 +753,7 @@
                     "disk": [
                         {
                             "driver": null,
-                            "size": 22000,
+                            "size": 12000,
                             "target": "vda",
                             "volatile_format": null,
                             "volatile_type": null
