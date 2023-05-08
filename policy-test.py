@@ -16,7 +16,7 @@ print("Policy list:" + str(result))
 # result = client.get_opa_policy("terraform")
 # print("Policy:" + str(result))
 
-tf_plan = open("step-03-plan.json", "r")
+tf_plan = open("terraform-plan.json", "r")
 input_data = json.load(tf_plan)
 tf_plan.close()
 # print("Input data:" + str(input_data))
