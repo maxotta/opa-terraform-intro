@@ -1,0 +1,20 @@
+{
+  "name": "Open Policy Agent Development",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "appPort": 8181,
+  "postStartCommand": "nohup bash -c 'opa run --server &'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+          "ms-azuretools.vscode-docker",
+          "esbenp.prettier-vscode",
+          "mohsen1.prettify-json",
+          "ms-python.vscode-pylance",
+          "ms-python.python",
+          "tsandall.opa"]
+    }
+  }
+}
+
